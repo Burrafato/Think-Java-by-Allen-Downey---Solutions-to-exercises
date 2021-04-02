@@ -1,0 +1,74 @@
+Exercise 6-1. 
+
+If you have a question about whether something is legal, and what happens if it is not, 
+
+a good way to find out is to ask the compiler. Answer the following questions by try‐ 
+
+ing them out. 
+
+  
+
+1. What happens if you invoke a value method and don’t do anything with the 
+
+result; that is, if you don’t assign it to a variable or use it as part of a larger expres‐ 
+
+sion? 
+
+CODE 
+
+public class Tryout { 
+
+    public static double tryout(double x) { 
+
+        return; 
+
+  
+
+    } 
+
+  
+
+    public static void main(String[] args) { 
+
+        System.out.println( tryout(3)); 
+
+    } 
+
+} 
+
+WHAT HAPPENS, DISPLAY: 
+
+java: incompatible types: missing return value 
+
+
+2. What happens if you use a void method as part of an expression? For example, 
+
+try System.out.println("boo!") + 7;
+
+public class Tryout { 
+
+    public static double tryout(double x) { 
+
+        x = System.out.println ("boo!") + 7; 
+
+        return -x; 
+
+  
+
+    } 
+
+  
+
+    public static void main(String[] args) { 
+
+        System.out.println( tryout(3)); 
+
+    } 
+
+} 
+
+ANSWER: 
+
+java: 'void' type not allowed here 
+
+
