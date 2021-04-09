@@ -1,0 +1,80 @@
+Exercise 7-2. 
+
+Using this formula: x1= (x0+ a/x0)/2 
+
+Write a method called squareRoot that takes a double and returns an approximation 
+
+of the square root of the parameter, using this technique. You should not use 
+
+Math.sqrt. 
+
+As your initial guess, you should use a/2. Your method should iterate until it gets two 
+
+consecutive estimates that differ by less than 0.0001. You can use Math.abs to calcu‐ 
+
+late the absolute value of the difference.  
+
+package th.domi.learn; 
+import java.util.Scanner; 
+ 
+ 
+public class Main { 
+ 
+public static void main(String[] args) { 
+Scanner input = new Scanner(System.in); 
+System.out.println("Type a number: "); 
+double number = input.nextDouble(); 
+// prompt the user to insert a number to find its squareroot 
+System.out.println("The square root of " + number + " is: " + squareRoot(number)); 
+} 
+ 
+public static double squareRoot(double a) { 
+double guess = a/2; 
+double x1 = (guess + a/guess)/2; 
+double difference = Math.abs(guess - x1); 
+ 
+while(difference > 0.0001){ 
+System.out.println(guess); // i want all values to be printed until the correct answer is reached 
+x1 = (guess + a/guess)/2; 
+difference = Math.abs(x1 - guess); 
+guess = x1; // update x 
+} 
+return x1; 
+} 
+} 
+ 
+ 
+OTHER SOLUTION 
+
+package th.domi.learn; 
+import java.util.Random; 
+import java.util.Scanner; 
+ 
+ 
+public class Main { 
+ 
+public static void main(String[] args) { 
+Random random = new Random(); 
+int number = random.nextInt(1000) + 1; 
+// the bot generates a random number between 1 and 100 
+System.out.println("What is the square root of " + number + " ?"); 
+// prompt the user to guess the square root of the number generated 
+System.out.println("The square root of " + number + " is: " + squareRoot(number)); 
+} 
+ 
+ 
+public static double squareRoot(double a) { 
+Scanner input = new Scanner(System.in); 
+double guess = input.nextDouble(); 
+double x1 = (guess + a/guess)/2; 
+double difference = Math.abs(guess - x1); 
+ 
+while(difference > 0.0001){ 
+System.out.println(guess); // i want all values to be printed until the correct answer is reached 
+x1 = (guess + a/guess)/2; 
+difference = Math.abs(x1 - guess); 
+guess = x1; // update x 
+} 
+return x1; 
+} 
+} 
