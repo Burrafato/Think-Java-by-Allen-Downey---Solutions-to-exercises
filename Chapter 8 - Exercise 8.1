@@ -1,0 +1,57 @@
+The goal of this exercise is to practice encapsulation with some of the examples in this
+chapter.
+1. Starting with the code in “Array Traversal” on page 107, write a method called
+powArray that takes a double array, a, and returns a new array that contains the
+elements of a squared. 
+
+import java.util.Arrays;
+
+public class Main {
+
+    public static void main(String[] args) {
+	double[] a = {1.0,2.0,3.0,4.0};
+	System.out.println(Arrays.toString(powArray(a)));
+    }
+
+    public static double[] powArray (double[] x){
+        double[] b = new double[x.length];
+        for(int i = 0; i< x.length; i++){
+            b[i] = Math.pow(x[i], 2.0);
+        }
+        return b;
+    }
+}
+
+OUTPUT = [1.0, 4.0, 9.0, 16.0]
+
+
+
+Generalize it to take a second argument and raise the ele‐
+ments of a to the given power.
+
+import java.util.Arrays;
+
+public class Main {
+
+    public static void main(String[] args) {
+	double[] a = {1.0,2.0,3.0,4.0};
+	int y = 6; // insert here the power you want to raise the array's elements to
+	System.out.println(Arrays.toString(powArray(a, y)));
+    }
+
+    public static double[] powArray (double[] x, int power){
+        double[] b = new double[x.length];
+        for(int i = 0; i< x.length; i++){
+            b[i] = Math.pow(x[i], power);
+        }
+        return b;
+    }
+}
+
+OUTPUT = [1.0, 64.0, 729.0, 4096.0]
+
+2. Starting with the code in “The Enhanced for Loop” on page 111, write a method
+called histogram that takes an int array of scores from 0 to (but not including)
+100, and returns a histogram of 100 counters. Generalize it to take the number of
+counters as an argument.
+
