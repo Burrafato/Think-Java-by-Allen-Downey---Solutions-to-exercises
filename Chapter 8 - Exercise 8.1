@@ -54,4 +54,20 @@ OUTPUT = [1.0, 64.0, 729.0, 4096.0]
 called histogram that takes an int array of scores from 0 to (but not including)
 100, and returns a histogram of 100 counters. Generalize it to take the number of
 counters as an argument.
+import java.util.Arrays;
 
+public class Main {
+
+    public static void main(String[] args) {
+        int[] scores = new int[100];
+        System.out.println(Arrays.toString(histogram(scores, 5)));
+    }
+
+    public static int[] histogram(int[] array, int counter) {
+        int[] counts = new int[counter];
+        for (int element : array) {
+            counts[element]++;
+        }
+        return counts;
+    }
+}
