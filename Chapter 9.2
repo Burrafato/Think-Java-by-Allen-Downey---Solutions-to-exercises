@@ -1,0 +1,32 @@
+package learn;
+
+import java.util.Arrays;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+
+        String phrase = "I really truly like programming with Java";
+
+
+        System.out.println(Arrays.toString(letterHist(phrase)));
+
+    }
+
+    public static int[] letterHist(String x){
+        int[] Histogram = new int[26];
+        String upperCase = x.toUpperCase();
+        for (char letter: upperCase.toCharArray()){
+            for (int i = 0; i < 26; i++){
+                if ((letter == (i+65)) || (letter == (i+90))){
+                    Histogram[i] ++;
+                }
+            }
+        }
+        return Histogram;
+    }
+}
+
+OUTPUT:
+[4, 0, 0, 0, 2, 0, 2, 1, 4, 1, 1, 4, 2, 1, 1, 1, 0, 4, 0, 2, 1, 1, 1, 0, 2, 0]
