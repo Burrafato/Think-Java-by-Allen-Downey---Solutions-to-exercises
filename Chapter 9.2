@@ -16,10 +16,11 @@ public class Main {
 
     public static int[] letterHist(String x){
         int[] Histogram = new int[26];
-        String upperCase = x.toUpperCase();
-        for (char letter: upperCase.toCharArray()){
+        String upperCase = x.toUpperCase(); 
+        // instead of checking both uppercase and lowercase letters separately, we convert all letters to the same case (upper or lower) and then check as we don't need to know    how many are lower and how many are upper but just the total
+        for (char letter: upperCase.toCharArray()){ 
             for (int i = 0; i < 26; i++){
-                if ((letter == (i+65)) || (letter == (i+90))){
+                if ((letter == (i+65)) || (letter == (i+90))){ // the unicode for uppercase letters of the Latin Alphabet runs from 65 to 90
                     Histogram[i] ++;
                 }
             }
