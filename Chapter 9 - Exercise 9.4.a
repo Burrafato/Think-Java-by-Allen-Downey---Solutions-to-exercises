@@ -1,0 +1,86 @@
+package th.domi.learn;
+
+public class Recurse {
+
+    public static void main(String[] args) {
+        String x = "ollo";
+        System.out.println(first(x));
+        System.out.println(rest(x));
+        System.out.println(middle(x));
+        System.out.println(length(x));
+        printString(x);
+        printBackward(x);
+        System.out.println(reverseString(x));
+        System.out.println(isPalindrome(x));
+    }
+
+    /**
+     * Prints the string, one character per line.
+     */
+    public static void printString(String s){
+        for(int i=0; i < s.length(); i++){
+            System.out.println(s.charAt(i));
+        }
+    }
+
+    /**
+     * Prints the string backwards, one character per line.
+     */
+    public static void printBackward(String s){
+        for(int i = (s.length() -1); i>=0; i--){
+            System.out.println(s.charAt(i));
+        }
+    }
+
+    /**
+     * returns a new string as a return value.
+     */
+    public static String reverseString(String s) {
+        if (length(s) != 0) {
+            return reverseString(rest(s)) + first(s);
+        }
+        return "";
+    }
+
+
+    public static boolean isPalindrome(String s){
+        int length = s.length();
+        if (length == 1){
+            return true;
+        }
+        else if (length == 2){
+            return first(s) == first(rest(s));
+        }
+        else {
+            return first(s) == first(reverseString(rest(s))) && isPalindrome(middle(s));
+        }
+    }
+
+    /**
+     * Returns the first character of the given String.
+     */
+    public static char first(String s) {
+        return s.charAt(0);
+    }
+
+    /**
+     * Returns all but the first letter of the given String.
+     */
+    public static String rest(String s) {
+        return s.substring(1);
+    }
+
+    /**
+     * Returns all but the first and last letter of the String.
+     */
+    public static String middle(String s) {
+        return s.substring(1, s.length() - 1);
+    }
+
+    /**
+     * Returns the length of the given String.
+     */
+    public static int length(String s) {
+        return s.length();
+    }
+}
