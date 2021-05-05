@@ -1,0 +1,40 @@
+Exercise 9-5.
+A word is said to be “abecedarian” if the letters in the word appear in alphabetical
+order. For example, the following are all six-letter English abecedarian words:
+abdest, acknow, acorsy, adempt, adipsy, agnosy, befist, behint, beknow, bijoux, biopsy,
+cestuy, chintz, deflux, dehors, dehort, deinos, diluvy, dimpsy
+Write a method called isAbecedarian that takes a String and returns a boolean
+indicating whether the word is abecedarian. Your method can be iterative or recur‐
+sive.
+
+package learn;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String x = "BeknoW";
+        String v = "False";
+        System.out.println(isAbecedarian(x));
+        System.out.println(isAbecedarian(v));
+    }
+
+    public static boolean isAbecedarian(String s) {
+        boolean flag = true;
+        String z = s.toUpperCase(); // let's convert all characters to the same case
+        for (int i = 0; i < (z.length() - 1); i++) {
+            char a = z.charAt(i);
+            int first = a; // we convert the char variable a into an int
+            if (first >= 65 && first <= 90) { //65-90 are the ASCII values for the latin alphabet
+                char b = z.charAt(i + 1);
+                int second = b;
+                if (first > second) { // we can now compare the two integers
+                    // for the word to be abecedarian, the integers have to be in ascending order from 65 to 90
+                    return false;
+                }
+            } else { // if the characters are outside the range 65-90 it means that they are not part of the latin alphabet (could be numbers or other symbols) 
+                return false;
+            }
+        }
+            return flag;
+        }
+    }
