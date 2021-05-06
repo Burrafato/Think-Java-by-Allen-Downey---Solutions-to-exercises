@@ -1,0 +1,49 @@
+Exercise 9-6.
+A word is said to be a “doubloon” if every letter that appears in the word appears
+exactly twice. Here are some example doubloons found in the dictionary:
+Abba, Anna, appall, appearer, appeases, arraigning, beriberi, bilabial, boob, Caucasus,
+coco, Dada, deed, Emmett, Hannah, horseshoer, intestines, Isis, mama, Mimi, murmur,
+noon, Otto, papa, peep, reappear, redder, sees, Shanghaiings, Toto
+Write a method called isDoubloon that takes a string and checks whether it is a dou‐
+bloon. To ignore case, invoke the toLowerCase method before checking.
+
+
+
+package learn;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String x = "ABbA";
+        String c = "Mai dai";
+        System.out.println(isDoubloon(x));
+        System.out.println(isDoubloon(c));
+    }
+
+    public static boolean isDoubloon(String x) {
+        boolean flag = true;
+        String upperCase = x.toUpperCase(); // we are going to convert all letters to the same case, to simplify our checks
+        int[] Histogram = letterHist(upperCase); // we will use the method previously created to get a Histogram out of a string
+        // the histogram has 26 indeces, one for every letter of the alphabet
+        // in each index it's stored the amount of times that a certain letter appears
+
+        for (int index : Histogram) { // for each index of the Histogram, we check its value to see if its equal to 2 or 0
+            if (index != 2 && index != 0) { // if this condition is true, the string is NOT a doubloon
+                return false;
+            }
+        }
+        return flag; // if the previous condition is not true, the string is a doubloon
+    }
+
+    public static int[] letterHist(String x) {
+        int[] Histogram = new int[26];
+        for (char letter : x.toCharArray()) {
+            for (int i = 0; i < 26; i++) {
+                if ((letter == (i + 65)) || (letter == (i + 90))) { // the unicode for uppercase letters of the Latin Alphabet runs from 65 to 90
+                    Histogram[i]++;
+                }
+            }
+        }
+        return Histogram;
+    }
+}
