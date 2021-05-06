@@ -1,0 +1,62 @@
+Exercise 9-7.
+Two words are anagrams if they contain the same letters and the same number of
+each letter. For example, “stop” is an anagram of “pots” and “allen downey” is an ana‐
+gram of “well annoyed”.
+Write a method that takes two strings and checks whether they are anagrams of each
+other.
+
+
+package th.domi.learn;
+import java.util.Arrays;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+	String a = "Pots";
+	String b = "stop";
+	String c = "nope";
+	System.out.println(areAnagrams(a, b)); // these are Anagrams, the output has to be TRUE
+	System.out.println(areAnagrams(a, c)); // these are NOT Anagrams, the output has to be FALSE
+    }
+
+    public static boolean areAnagrams(String x, String y) {
+        boolean flag = true;
+        String upperCasex = x.toUpperCase(); //we change all the char to the same case for string x
+        String upperCasey = y.toUpperCase(); //we change all the char to the same case for string y
+        int[] Histogramx = letterHist(upperCasex); //call letterHist method to get the Histogram for String x
+        System.out.println(Arrays.toString(Histogramx)); //we print the Histogram for String x
+        int[] Histogramy = letterHist(upperCasey); //call letterHist method to get the Histogram for String y
+        System.out.println(Arrays.toString(Histogramy)); //we print the Histogram for String y
+        for(int i= 0; i < 26; i++){
+            if(Histogramx[i] != Histogramy[i]){ // we compare the values of the two Histograms for each index i
+                return false; // if the values are not equal for each index i, the strings are not Anagrams
+            }
+        }
+        return flag; //if the values are equal for all indeces, then the strings are Anagrams
+    }
+
+    public static int[] letterHist(String x) { // this method gives us the letter Histogram of a string,
+        //each index represents a char and its value the number of times the given char appears in the string
+        int[] Histogram = new int[26];
+        for (char letter : x.toCharArray()) {
+            for (int i = 0; i < 26; i++) {
+                if ((letter == (i + 65)) || (letter == (i + 90))) { // the unicode for uppercase letters of the Latin Alphabet runs from 65 to 90
+                    Histogram[i]++;
+                }
+            }
+        }
+        return Histogram;
+    }
+}
+
+
+OUTPUT:
+
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+true
+
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+false
