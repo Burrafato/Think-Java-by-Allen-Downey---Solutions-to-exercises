@@ -1,0 +1,43 @@
+
+
+public class Time {
+
+        private int hour;
+        private int minute;
+        private double second;
+
+    public static void main(String[] args) {
+        Time time = new Time(11, 30, 5);
+        time.increment(45);
+        printTime(time);
+    }
+
+
+    public Time() {
+        this.hour = 0;
+        this.minute = 0;
+        this.second = 0.0;
+    }
+
+    public Time(int hour, int minute, double second) {
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+    }
+
+    public void increment(double seconds) {
+        this.second += seconds;
+        this.minute += this.second / 60;
+        this.second %= 60;
+        this.hour += this.minute / 60;
+        this.minute %= 60;
+    }
+
+    public static void printTime(Time t) {
+        System.out.printf("%02d:%02d:%04.1f\n", t.hour, t.minute, t.second);
+    }
+
+}
+
+OUTPUT
+11:30:50,0
