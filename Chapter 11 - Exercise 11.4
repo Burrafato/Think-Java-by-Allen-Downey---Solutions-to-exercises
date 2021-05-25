@@ -1,0 +1,31 @@
+
+public class Birthday {
+
+    private int day;
+    private int month;
+    private int year;
+
+    public Birthday() {
+        this.day = 0;
+        this.month = 0;
+        this.year = 0;
+    }
+
+    public Birthday (int day, int month, int year){
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    public static void main(String[] args){
+        Birthday birthday = new Birthday(25, 5, 2021);
+        printDate(birthday);
+    }
+
+    public static void printDate(Birthday x){
+        System.out.println("The birthday is " + x.day + "/" + x.month + "/" + x.year);
+    }
+}
+
+OUTPUT
+The birthday is 25/5/2021
