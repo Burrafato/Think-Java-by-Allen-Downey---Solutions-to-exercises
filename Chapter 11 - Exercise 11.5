@@ -1,0 +1,45 @@
+package th.domi.learn;
+
+public class Rational {
+
+    private int numerator;
+    private int denominator;
+    public Rational(){
+        this.numerator = 0;
+        this.denominator = 1;
+    }
+
+    public static void printRational (Rational number){
+        System.out.println("The rational number is: " + number.numerator + "/" + number.denominator);
+    }
+
+    public static void main(String[] args){
+        Rational number = new Rational(3,4);
+        printRational(number);
+        System.out.println(number.toString());
+        number.negate();
+            System.out.println(number1);
+        number.invert();
+            System.out.println(number);
+    }
+
+    public Rational(int numerator, int denominator){
+        this.numerator = numerator;
+        this.denominator = denominator;
+    }
+
+    public String toString(){
+        return String.format("%01d/%01d", this.numerator, this.denominator);
+    }
+
+    public void negate(){
+        this.numerator = -1 * this.numerator;
+    }
+
+    public void invert(){
+        int x = this.numerator;
+        int y = this.denominator;
+        this.numerator = y;
+        this.denominator = x;
+    }
+}
